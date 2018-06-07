@@ -1,22 +1,37 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Angus Henry
+ * CulminatingProjectForm.java
+ * This program provides a comparision of battles. 
+ * 06/06/ 2018
  */
 
 package CulminatingProject;
-
+import java.util.*;
 /**
  *
  * @author anhen3335
  */
 public class CulminatingProjectForm extends javax.swing.JFrame {
+ArrayList <String> Datesstart = new ArrayList();
+ArrayList <String> Datesend = new ArrayList();
+ArrayList <String> Victor = new ArrayList();
+ArrayList <String> LeadersGood = new ArrayList();
+ArrayList <String> LeadersEvil = new ArrayList ();
+ArrayList <String> CasualtiesGood = new ArrayList();
+ArrayList <String> CasualtiesEvil = new ArrayList();
+ArrayList <String> BelligerentsGood = new ArrayList();
+ArrayList <String> BelligerentsEvil = new ArrayList();
+
 
     /**
      * Creates new form CulminatingProjectForm
      */
     public CulminatingProjectForm() {
         initComponents();
+        buttonCaen.setEnabled(false);
+        buttonEl.setEnabled(false);
+        buttonbulge.setEnabled(false);
+        buttonCompare.setEnabled(false);
     }
 
     /**
@@ -41,6 +56,8 @@ public class CulminatingProjectForm extends javax.swing.JFrame {
         buttonCaen = new javax.swing.JButton();
         buttonEl = new javax.swing.JButton();
         buttonbulge = new javax.swing.JButton();
+        buttonStart = new javax.swing.JButton();
+        labelExplain = new javax.swing.JLabel();
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
@@ -60,7 +77,7 @@ public class CulminatingProjectForm extends javax.swing.JFrame {
         jScrollPane3.setViewportView(textCompare);
 
         labelTitle.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        labelTitle.setText("Battle Comparison");
+        labelTitle.setText("WW2 Battle Comparison");
 
         buttonCompare.setText("Compare");
         buttonCompare.addActionListener(new java.awt.event.ActionListener() {
@@ -70,10 +87,24 @@ public class CulminatingProjectForm extends javax.swing.JFrame {
         });
 
         buttonCaen.setText("Caen");
+        buttonCaen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCaenActionPerformed(evt);
+            }
+        });
 
         buttonEl.setText("El Alamein");
 
         buttonbulge.setText("Bulge");
+
+        buttonStart.setText("Start");
+        buttonStart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonStartActionPerformed(evt);
+            }
+        });
+
+        labelExplain.setText("Press start to begin");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -97,15 +128,27 @@ public class CulminatingProjectForm extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(labelTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(180, 180, 180))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(buttonStart, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(246, 246, 246))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(labelExplain)
+                        .addGap(236, 236, 236))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(labelTitle)
+                        .addGap(143, 143, 143))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(labelTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
+                .addGap(4, 4, 4)
+                .addComponent(labelExplain)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonStart)
+                .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
@@ -138,6 +181,199 @@ public class CulminatingProjectForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonCompareActionPerformed
 
+    private void buttonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonStartActionPerformed
+       Collections.addAll(Datesstart, "6 June 1944", "1 July 1942","16 Dec 1944");
+       Collections.addAll (Datesend, "6 August 1944", "27 July 1942", "25 Jan 1945");
+       Collections.addAll (Victor, "Alled", "Stalemate", "Axis");
+       Collections.addAll (LeadersGood, "Bernard Montgomery (UK)", "Miles Dempsey (UK)", "Claude Auchinleck (UK)", " Dwight D. Eisenhower (US)", "Bernard Montgomery (UK)", "Omar Bradley (US)", "Courtney Hodges (US)", "George S. Patton (US)");
+       Collections.addAll (LeadersEvil, "Erwin Rommel", "Friedrich Dollmann", "Paul Hausser", "Ettore Bastico(Italy)" + "Walter Model", "Gerd von Rundstedt", ", Hasso von Manteuffel", "Sepp Dietrich", "Erich Brandenberger");
+       Collections.addAll (CasualtiesGood, "50 539", "13  250", "146 000");
+       Collections.addAll (CasualtiesEvil, "Unkown", "17 000", "125 000");
+       Collections.addAll (BelligerentsGood, "United Kingdom", "Canada", "United States", "Australia", "British Raj", "New Zealend", "France", "Belgium","Luxembourg");
+       Collections.addAll (BelligerentsEvil, "Nazi Germany", "Kingdom of Italy");
+        buttonStart.setEnabled(false);
+        buttonCaen.setEnabled(true);
+        buttonEl.setEnabled(true);
+        buttonbulge.setEnabled(true);
+        buttonCompare.setEnabled(true);
+    }//GEN-LAST:event_buttonStartActionPerformed
+
+    private void buttonCaenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCaenActionPerformed
+        textBattle.setText("");
+        textBattle.setText("***Caen***");
+        textBattle.append ("Belligerents: " + "\n");
+        textBattle.append ("-Axis: " + EvilBelligerents("0") + "\n");
+        textBattle.append ("-Allied: " + GoodBelligerents("0") + "," + GoodBelligerents("1") + "\n");
+        textBattle.append ("Casualties:" + "\n");
+        textBattle.append ("-Axis: " + EvilCasuelties("0") + "\n");
+        textBattle.append ("-Allies: " + GoodCasuelties("0") + "\n");
+        textBattle.append ("Leaders: " + "\n");
+        textBattle.append ("-Axis: " + );
+        
+        
+    }//GEN-LAST:event_buttonCaenActionPerformed
+    public String EvilBelligerents (String check){
+        int i;
+        if (check == "0"){
+          i = 0;  
+        }
+        else if (check == "1") {
+           i =1;
+        }
+        else {
+            i = -1;
+        }
+         return BelligerentsEvil.get(i);
+    }
+    public String GoodBelligerents (String check){
+        int i;
+        if (check == "0"){
+            i = 0;
+        }
+        else if (check == "1"){
+            i = 1;
+        }
+        else if (check == "2"){
+            i = 2;
+        }
+        else if (check == "3"){
+            i =3;
+        }
+        else if (check == "4"){
+            i = 4;
+        }
+        else if (check == "5"){
+            i = 5;
+        }
+        else if (check == "6"){
+            i = 6;
+        }
+        else if (check == "7"){
+            i = 7;
+        }
+        else if (check == "8"){
+            i = 8;
+        }
+        else{
+            i = -1;
+        }
+        return BelligerentsGood.get (i);
+    }
+    public String EvilCasuelties (String check){
+        int i;
+        if (check == "0"){
+            i = 0;
+        }
+        else if (check == "1"){
+            i = 1;
+        }
+        else if (check == "2"){
+            i = 2;
+        }
+        else {
+            i = -1;
+        }
+        return CasualtiesEvil.get (i);
+    }
+     public String GoodCasuelties (String check){
+        int i;
+        if (check == "0"){
+            i = 0;
+        }
+        else if (check == "1"){
+            i = 1;
+        }
+        else if (check == "2"){
+            i = 2;
+        }
+        else {
+            i = -1;
+        }
+        return CasualtiesGood.get (i);
+    }
+     public String Start (String check){
+        int i;
+        if (check == "0"){
+            i = 0;
+        }
+        else if (check == "1"){
+            i = 1;
+        }
+        else if (check == "2"){
+            i = 2;
+        }
+        else {
+            i = -1;
+        }
+        return Datesstart.get (i);
+    }
+     public String stop (String check){
+        int i;
+        if (check == "0"){
+            i = 0;
+        }
+        else if (check == "1"){
+            i = 1;
+        }
+        else if (check == "2"){
+            i = 2;
+        }
+        else {
+            i = -1;
+        }
+        return Datesend.get (i);
+    }
+     public String winner (String check){
+        int i;
+        if (check == "0"){
+            i = 0;
+        }
+        else if (check == "1"){
+            i = 1;
+        }
+        else if (check == "2"){
+            i = 2;
+        }
+        else {
+            i = -1;
+        }
+        return Victor.get (i);
+    }
+     public String EvilLeader (String check){
+           int i;
+        if (check == "0"){
+            i = 0;
+        }
+        else if (check == "1"){
+            i = 1;
+        }
+        else if (check == "2"){
+            i = 2;
+        }
+        else if (check == "3"){
+            i =3;
+        }
+        else if (check == "4"){
+            i = 4;
+        }
+        else if (check == "5"){
+            i = 5;
+        }
+        else if (check == "6"){
+            i = 6;
+        }
+        else if (check == "7"){
+            i = 7;
+        }
+        else if (check == "8"){
+            i = 8;
+        }
+        else{
+            i = -1;
+        }
+        return LeadersEvil.get (i);
+     }
+     
     /**
      * @param args the command line arguments
      */
@@ -177,6 +413,7 @@ public class CulminatingProjectForm extends javax.swing.JFrame {
     private javax.swing.JButton buttonCaen;
     private javax.swing.JButton buttonCompare;
     private javax.swing.JButton buttonEl;
+    private javax.swing.JButton buttonStart;
     private javax.swing.JButton buttonbulge;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
@@ -184,6 +421,7 @@ public class CulminatingProjectForm extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JLabel labelExplain;
     private javax.swing.JLabel labelTitle;
     private javax.swing.JTextArea textBattle;
     private javax.swing.JTextArea textCompare;
