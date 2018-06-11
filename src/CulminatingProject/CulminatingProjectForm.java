@@ -17,10 +17,11 @@ ArrayList <String> Datesend = new ArrayList();
 ArrayList <String> Victor = new ArrayList();
 ArrayList <String> LeadersGood = new ArrayList();
 ArrayList <String> LeadersEvil = new ArrayList ();
-ArrayList <String> CasualtiesGood = new ArrayList();
-ArrayList <String> CasualtiesEvil = new ArrayList();
+ArrayList <Integer> CasualtiesGood = new ArrayList();
+ArrayList <Integer> CasualtiesEvil = new ArrayList();
 ArrayList <String> BelligerentsGood = new ArrayList();
 ArrayList <String> BelligerentsEvil = new ArrayList();
+ArrayList <String> Battles = new ArrayList();
 
 
     /**
@@ -72,6 +73,7 @@ ArrayList <String> BelligerentsEvil = new ArrayList();
         textBattle.setRows(5);
         jScrollPane1.setViewportView(textBattle);
 
+        textCompare.setEditable(false);
         textCompare.setColumns(20);
         textCompare.setRows(5);
         jScrollPane3.setViewportView(textCompare);
@@ -94,8 +96,18 @@ ArrayList <String> BelligerentsEvil = new ArrayList();
         });
 
         buttonEl.setText("El Alamein");
+        buttonEl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonElActionPerformed(evt);
+            }
+        });
 
         buttonbulge.setText("Bulge");
+        buttonbulge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonbulgeActionPerformed(evt);
+            }
+        });
 
         buttonStart.setText("Start");
         buttonStart.addActionListener(new java.awt.event.ActionListener() {
@@ -178,19 +190,53 @@ ArrayList <String> BelligerentsEvil = new ArrayList();
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonCompareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCompareActionPerformed
-        // TODO add your handling code here:
+        textCompare.setText ("");
+        textCompare.append ("Most overall casualties: "  + battle("0") + " (" +totalcas(0) + ")");
+        //textCompare.append ("Most Axis casualties: " + axiscas(0);
+        //textCompare.append ("Most Allied casualties: " + );
+        
     }//GEN-LAST:event_buttonCompareActionPerformed
+public int totalcas (int check){
+    int big = 0;
+    int test;
+    for (int i = 0; i  < CasualtiesGood.size(); i ++){
+        test = CasualtiesEvil.get(i) +CasualtiesGood.get(i);
+        if (big < test ){
+          big = test;
+        }
+    }
+   return big;
+}
 
+public String battle (String check){
+     int big = Integer.parseInt(check);
+    int test;
+    int count = 0;
+    for (int i = 0; i  < CasualtiesGood.size(); i ++){
+        test = CasualtiesEvil.get(i) +CasualtiesGood.get(i);
+        if (big < test ){
+          big = test;
+          count = i;
+        }
+    }
+    return Battles.get(count);
+}
+            
+public int Axis (Integer check){
+    
+    return 0;
+}
     private void buttonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonStartActionPerformed
        Collections.addAll(Datesstart, "6 June 1944", "1 July 1942","16 Dec 1944");
        Collections.addAll (Datesend, "6 August 1944", "27 July 1942", "25 Jan 1945");
-       Collections.addAll (Victor, "Alled", "Stalemate", "Axis");
-       Collections.addAll (LeadersGood, "Bernard Montgomery (UK)", "Miles Dempsey (UK)", "Claude Auchinleck (UK)", " Dwight D. Eisenhower (US)", "Bernard Montgomery (UK)", "Omar Bradley (US)", "Courtney Hodges (US)", "George S. Patton (US)");
-       Collections.addAll (LeadersEvil, "Erwin Rommel", "Friedrich Dollmann", "Paul Hausser", "Ettore Bastico(Italy)" + "Walter Model", "Gerd von Rundstedt", ", Hasso von Manteuffel", "Sepp Dietrich", "Erich Brandenberger");
-       Collections.addAll (CasualtiesGood, "50 539", "13  250", "146 000");
-       Collections.addAll (CasualtiesEvil, "Unkown", "17 000", "125 000");
-       Collections.addAll (BelligerentsGood, "United Kingdom", "Canada", "United States", "Australia", "British Raj", "New Zealend", "France", "Belgium","Luxembourg");
+       Collections.addAll (Victor, "Allies", "Stalemate", "Axis");
+       Collections.addAll (LeadersGood, "Bernard Montgomery (UK)", "Miles Dempsey (UK)", "Claude Auchinleck (UK)", " Dwight D. Eisenhower (US)", "Omar Bradley (US)", "Courtney Hodges (US)", "George S. Patton (US)");
+       Collections.addAll (LeadersEvil, "Erwin Rommel(Ger)", "Friedrich Dollmann(Ger)", "Paul Hausser(Ger)", "Ettore Bastico(Italy)" , "Walter Model(Ger)", "Gerd von Rundstedt(Ger)", "Hasso von Manteuffel(Ger)", "Sepp Dietrich(Ger)", "Erich Brandenberger(Ger)");
+       Collections.addAll (CasualtiesGood, 50539, 13250, 146000);
+       Collections.addAll (CasualtiesEvil, 200000, 17000, 125000);
+       Collections.addAll (BelligerentsGood, "United Kingdom", "Canada", "United States", "Australia", "British Raj", "New Zealend", "France", "Belgium","Luxembourg", "South Africa");
        Collections.addAll (BelligerentsEvil, "Nazi Germany", "Kingdom of Italy");
+       Collections.addAll (Battles, "Caen", "First Battle of El Alamein", "Battle of the Bulge");
         buttonStart.setEnabled(false);
         buttonCaen.setEnabled(true);
         buttonEl.setEnabled(true);
@@ -200,18 +246,62 @@ ArrayList <String> BelligerentsEvil = new ArrayList();
 
     private void buttonCaenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCaenActionPerformed
         textBattle.setText("");
-        textBattle.setText("***Caen***");
+        textBattle.setText("***Caen***" + "\n");
         textBattle.append ("Belligerents: " + "\n");
         textBattle.append ("-Axis: " + EvilBelligerents("0") + "\n");
         textBattle.append ("-Allied: " + GoodBelligerents("0") + "," + GoodBelligerents("1") + "\n");
         textBattle.append ("Casualties:" + "\n");
-        textBattle.append ("-Axis: " + EvilCasuelties("0") + "\n");
-        textBattle.append ("-Allies: " + GoodCasuelties("0") + "\n");
+        textBattle.append ("-Axis: " + EvilCasuelties(0) + " (This is an estimate, the original number was lost)" +"\n");
+        textBattle.append ("-Allies: " + GoodCasuelties(0) + "\n");
         textBattle.append ("Leaders: " + "\n");
-        textBattle.append ("-Axis: " + );
+        textBattle.append ("-Axis: " + EvilLeader("0") + ", " + EvilLeader("1") + ", " + EvilLeader("2") + "\n");
+        textBattle.append ("-Allies: " + GoodLeaders("0") + ", " + GoodLeaders("1") + "\n");
+        textBattle.append ("Dates:" + "\n");
+        textBattle.append ("-Started: " + Start("0") + "\n");
+        textBattle.append ("-Ended: " + stop("0") + "\n");
+        textBattle.append ("Victors: " + "\n");
+        textBattle.append ( "-" + winner("0"));
         
         
     }//GEN-LAST:event_buttonCaenActionPerformed
+
+    private void buttonElActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonElActionPerformed
+        textBattle.setText("");
+        textBattle.setText("***First Battle of El Alamein***" + "\n");
+        textBattle.append ("Belligerents: " + "\n");
+        textBattle.append ("-Axis: " + EvilBelligerents("0") +  " "+ EvilBelligerents("1") +"\n");
+        textBattle.append ("-Allied: " + GoodBelligerents("0") + ", " + GoodBelligerents("3") + ", " + GoodBelligerents("4") + ", " +GoodBelligerents("5") +", " + GoodBelligerents("9")+"\n");
+        textBattle.append ("Casualties:" + "\n");
+        textBattle.append ("-Axis: " + EvilCasuelties(1) + "\n");
+        textBattle.append ("-Allies: " + GoodCasuelties(1) + "\n");
+        textBattle.append ("Leaders: " + "\n");
+        textBattle.append ("-Axis: " + EvilLeader("0") + ", " + EvilLeader("3") + "\n");
+        textBattle.append ("-Allies: " + GoodLeaders("2") + "\n");
+        textBattle.append ("Dates:" + "\n");
+        textBattle.append ("-Started: " + Start("1") + "\n");
+        textBattle.append ("-Ended: " + stop("1") + "\n");
+        textBattle.append ("Victors: " + "\n");
+        textBattle.append ( "-" + winner("1"));
+    }//GEN-LAST:event_buttonElActionPerformed
+
+    private void buttonbulgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonbulgeActionPerformed
+        textBattle.setText("");
+        textBattle.setText("***Battle of the Bulge***" + "\n");
+        textBattle.append ("Belligerents: " + "\n");
+        textBattle.append ("-Axis: " + EvilBelligerents("0") + "\n");
+        textBattle.append ("-Allied: " + GoodBelligerents("0") + "," + GoodBelligerents("1") + ", " +GoodBelligerents("2") + ", " +GoodBelligerents("6") + ", " +GoodBelligerents("7") + ", " +GoodBelligerents("8") + "\n");
+        textBattle.append ("Casualties:" + "\n");
+        textBattle.append ("-Axis: " + EvilCasuelties(2) + "\n");
+        textBattle.append ("-Allies: " + GoodCasuelties(2) + "\n");
+        textBattle.append ("Leaders: " + "\n");
+        textBattle.append ("-Axis: " + EvilLeader("4") + ", " + EvilLeader("5") + ", " + EvilLeader("6") + ", " + EvilLeader("7") + ", " + EvilLeader("8") + "\n");
+        textBattle.append ("-Allies: " + GoodLeaders("0") + ", " + GoodLeaders("3") + ", " + GoodLeaders("4") + ", " + GoodLeaders("5") + ", " + GoodLeaders("6") + "\n");
+        textBattle.append ("Dates:" + "\n");
+        textBattle.append ("-Started: " + Start("2") + "\n");
+        textBattle.append ("-Ended: " + stop("2") + "\n");
+        textBattle.append ("Victors: " + "\n");
+        textBattle.append ( "-" + winner("0"));
+    }//GEN-LAST:event_buttonbulgeActionPerformed
     public String EvilBelligerents (String check){
         int i;
         if (check == "0"){
@@ -254,20 +344,23 @@ ArrayList <String> BelligerentsEvil = new ArrayList();
         else if (check == "8"){
             i = 8;
         }
+         else if (check == "9"){
+            i = 9;
+        }
         else{
             i = -1;
         }
         return BelligerentsGood.get (i);
     }
-    public String EvilCasuelties (String check){
+    public Integer EvilCasuelties (Integer check){
         int i;
-        if (check == "0"){
+        if (check == 0){
             i = 0;
         }
-        else if (check == "1"){
+        else if (check == 1){
             i = 1;
         }
-        else if (check == "2"){
+        else if (check == 2){
             i = 2;
         }
         else {
@@ -275,15 +368,15 @@ ArrayList <String> BelligerentsEvil = new ArrayList();
         }
         return CasualtiesEvil.get (i);
     }
-     public String GoodCasuelties (String check){
+     public Integer GoodCasuelties (Integer check){
         int i;
-        if (check == "0"){
+        if (check == 0){
             i = 0;
         }
-        else if (check == "1"){
+        else if (check == 1){
             i = 1;
         }
-        else if (check == "2"){
+        else if (check == 2){
             i = 2;
         }
         else {
@@ -373,6 +466,34 @@ ArrayList <String> BelligerentsEvil = new ArrayList();
         }
         return LeadersEvil.get (i);
      }
+     public String GoodLeaders(String check){
+        int i;
+        if (check == "0"){
+            i = 0;
+        }
+        else if (check == "1"){
+            i = 1;
+        }
+        else if (check == "2"){
+            i = 2;
+        }
+        else if (check == "3"){
+            i =3;
+        }
+        else if (check == "4"){
+            i = 4;
+        }
+        else if (check == "5"){
+            i = 5;
+        }
+        else if (check == "6"){
+            i = 6;
+        }
+        else{
+            i = -1;
+        }
+        return LeadersGood.get (i);
+    }
      
     /**
      * @param args the command line arguments
