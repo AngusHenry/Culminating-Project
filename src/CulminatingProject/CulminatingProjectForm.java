@@ -191,13 +191,16 @@ ArrayList <String> Battles = new ArrayList();
 
     private void buttonCompareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCompareActionPerformed
         textCompare.setText ("");
-        textCompare.append ("Most overall casualties: "  + battle("0") + " (" +totalcas(0) + ")");
-        //textCompare.append ("Most Axis casualties: " + axiscas(0);
-        //textCompare.append ("Most Allied casualties: " + );
+        textCompare.append ("Most overall casualties: "  + battle("0") + " (" +totalcas(0) + ")" +"\n");
+        textCompare.append ("Most Axis casualties: " + battle("1") +" (" + Axiscas(0) + ")" + "\n");
+        textCompare.append ("Most Allied casualties: " + battle ("2") + " (" +Alliesacs(0) + ")" + "\n");
+        textCompare.append ("Leaders with most battles:" + "\n");
+        textCompare.append ("-Axis: " + mostAxis("0") + "\n");
+        textCompare.append ("-Allies: " + mostAllies("0"));
         
     }//GEN-LAST:event_buttonCompareActionPerformed
 public int totalcas (int check){
-    int big = 0;
+    int big = check;
     int test;
     for (int i = 0; i  < CasualtiesGood.size(); i ++){
         test = CasualtiesEvil.get(i) +CasualtiesGood.get(i);
@@ -209,29 +212,106 @@ public int totalcas (int check){
 }
 
 public String battle (String check){
-     int big = Integer.parseInt(check);
+     int big = 0;
+     int checker  = Integer.parseInt(check);
     int test;
     int count = 0;
     for (int i = 0; i  < CasualtiesGood.size(); i ++){
         test = CasualtiesEvil.get(i) +CasualtiesGood.get(i);
+       if (checker == 0){
         if (big < test ){
           big = test;
           count = i;
         }
+       }
+       else if (checker == 1){
+           test = CasualtiesEvil.get(i);
+          if (big < test ){
+          big = test;
+          count = i;
+        } 
+       }
+          else if (checker == 2){
+                test = CasualtiesGood.get(i);
+          if (big < test ){
+          big = test;
+          count = i;
+          }
+       }
     }
     return Battles.get(count);
 }
             
-public int Axis (Integer check){
-    
-    return 0;
+public int Axiscas (Integer check){
+      int big = check;
+    int test;
+    for (int i = 0; i  < CasualtiesEvil.size(); i ++){
+        test = CasualtiesEvil.get(i);
+        if (big < test ){
+          big = test;
+        }
+    }
+    return big;
+}
+
+public int Alliesacs (Integer check){
+       int big = check;
+    int test;
+    for (int i = 0; i  < CasualtiesGood.size(); i ++){
+        test = CasualtiesGood.get(i);
+        if (big < test ){
+          big = test;
+        }
+    }
+    return big;
+}
+public String mostAxis (String check){
+    int once = 0;
+    int count = 0;
+    for (int i = 0; i  < LeadersEvil.size(); i ++){
+        if (once == 0){
+            if (LeadersEvil.get(i) == LeadersEvil.get(i)){
+                count = 0; 
+                once ++;
+            }
+            else
+            {
+                 if (LeadersEvil.get(i) == LeadersEvil.get(count)){
+                count = i; 
+            }
+            }
+            
+        }
+    }
+    return LeadersEvil.get(count);
+}
+
+public String mostAllies (String check){
+    int once = 0;
+    int count = 0;
+    for (int i = 0; i  < LeadersEvil.size(); i ++){
+        if (once == 0){
+            if (LeadersGood.get(i) == LeadersGood.get(i)){
+                count = 0; 
+                once ++;
+            }
+            else
+            {
+                 if (LeadersGood.get(i) == LeadersGood.get(count)){
+                count = i; 
+            }
+            }
+            
+        }
+    }
+    return LeadersGood.get(count);
 }
     private void buttonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonStartActionPerformed
        Collections.addAll(Datesstart, "6 June 1944", "1 July 1942","16 Dec 1944");
        Collections.addAll (Datesend, "6 August 1944", "27 July 1942", "25 Jan 1945");
        Collections.addAll (Victor, "Allies", "Stalemate", "Axis");
-       Collections.addAll (LeadersGood, "Bernard Montgomery (UK)", "Miles Dempsey (UK)", "Claude Auchinleck (UK)", " Dwight D. Eisenhower (US)", "Omar Bradley (US)", "Courtney Hodges (US)", "George S. Patton (US)");
-       Collections.addAll (LeadersEvil, "Erwin Rommel(Ger)", "Friedrich Dollmann(Ger)", "Paul Hausser(Ger)", "Ettore Bastico(Italy)" , "Walter Model(Ger)", "Gerd von Rundstedt(Ger)", "Hasso von Manteuffel(Ger)", "Sepp Dietrich(Ger)", "Erich Brandenberger(Ger)");
+       Collections.addAll (LeadersGood, "Bernard Montgomery (UK)", "Miles Dempsey (UK)", "Claude Auchinleck (UK)", " Dwight D. Eisenhower (US)", "Omar Bradley (US)", "Courtney Hodges (US)", "George S. Patton (US)" +"Bernard Montgomery (UK)" );
+       Collections.addAll (LeadersEvil, "Erwin Rommel(Ger)", "Friedrich Dollmann(Ger)", "Paul Hausser(Ger)", "Ettore Bastico(Italy)" , "Walter Model(Ger)", "Gerd von Rundstedt(Ger)", "Hasso von Manteuffel(Ger)", "Sepp Dietrich(Ger)", "Erich Brandenberger(Ger)" + "Erwin Rommel(Ger)");
        Collections.addAll (CasualtiesGood, 50539, 13250, 146000);
        Collections.addAll (CasualtiesEvil, 200000, 17000, 125000);
        Collections.addAll (BelligerentsGood, "United Kingdom", "Canada", "United States", "Australia", "British Raj", "New Zealend", "France", "Belgium","Luxembourg", "South Africa");
