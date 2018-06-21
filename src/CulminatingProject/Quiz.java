@@ -10,19 +10,22 @@ package CulminatingProject;
  *
  * @author anhen3335
  */
+// Declares the score variable and the random variable
 public class Quiz extends javax.swing.JFrame {
 int random = (int) Math.ceil (Math.random()*4);
 int score = 0;
+int counter = 0;
     /**
      * Creates new form Quiz
      */
     public Quiz() {
+        // makes buttons false
         initComponents();
         Button1A.setEnabled(false);
         Button2A.setEnabled(false);
         Button3A.setEnabled(false);
         Button4A.setEnabled(false);
-        button1B.setEnabled(false);
+        Button1B.setEnabled(false);
         Button2B.setEnabled(false);
         Button3B.setEnabled(false);
         Button4B.setEnabled(false);
@@ -34,6 +37,8 @@ int score = 0;
         Button2D.setEnabled(false);
         Button3D.setEnabled(false);
         Button4D.setEnabled(false);
+        buttonreturn.setEnabled(false);
+        int counter = 0;
         int score = 0;
         System.out.println (random);
         
@@ -53,7 +58,7 @@ int score = 0;
         jPanel1 = new javax.swing.JPanel();
         LabelQuizTitle = new javax.swing.JLabel();
         Button1A = new javax.swing.JButton();
-        button1B = new javax.swing.JButton();
+        Button1B = new javax.swing.JButton();
         Button1C = new javax.swing.JButton();
         Button1D = new javax.swing.JButton();
         Button2A = new javax.swing.JButton();
@@ -89,6 +94,9 @@ int score = 0;
         label2Q = new javax.swing.JLabel();
         label3Q = new javax.swing.JLabel();
         label4Q = new javax.swing.JLabel();
+        labelScore = new javax.swing.JLabel();
+        labelScorenum = new javax.swing.JLabel();
+        buttonreturn = new javax.swing.JButton();
 
         jRadioButton1.setText("jRadioButton1");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -115,13 +123,13 @@ int score = 0;
         });
         jPanel1.add(Button1A, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 151, -1, -1));
 
-        button1B.setText("B");
-        button1B.addActionListener(new java.awt.event.ActionListener() {
+        Button1B.setText("B");
+        Button1B.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1BActionPerformed(evt);
+                Button1BActionPerformed(evt);
             }
         });
-        jPanel1.add(button1B, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 185, -1, -1));
+        jPanel1.add(Button1B, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 185, -1, -1));
 
         Button1C.setText("C");
         Button1C.addActionListener(new java.awt.event.ActionListener() {
@@ -217,7 +225,7 @@ int score = 0;
                 Button4BActionPerformed(evt);
             }
         });
-        jPanel1.add(Button4B, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 390, -1, -1));
+        jPanel1.add(Button4B, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 390, -1, 20));
 
         Button4C.setText("C");
         Button4C.addActionListener(new java.awt.event.ActionListener() {
@@ -260,22 +268,34 @@ int score = 0;
         jPanel1.add(label4D, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 450, 240, 22));
         jPanel1.add(label2D, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 452, 200, 22));
         jPanel1.add(label4A, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, 160, 20));
-        jPanel1.add(label3D, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 143, 22));
-        jPanel1.add(label3B, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 143, 20));
+        jPanel1.add(label3D, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 270, 22));
+        jPanel1.add(label3B, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 270, 20));
         jPanel1.add(label4B, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, 180, 22));
         jPanel1.add(label4C, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, 180, 22));
-        jPanel1.add(label3A, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, 143, 22));
-        jPanel1.add(label3C, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 143, 22));
+        jPanel1.add(label3A, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, 260, 22));
+        jPanel1.add(label3C, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 280, 22));
 
         label1Q.setText(" ");
-        jPanel1.add(label1Q, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 280, 20));
+        jPanel1.add(label1Q, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 280, 20));
         jPanel1.add(label2Q, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 290, 60));
 
         label3Q.setText(" ");
         jPanel1.add(label3Q, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 310, 20));
 
         label4Q.setText(" ");
-        jPanel1.add(label4Q, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 284, 320, 70));
+        jPanel1.add(label4Q, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 290, 20));
+
+        labelScore.setText("Score");
+        jPanel1.add(labelScore, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 30));
+        jPanel1.add(labelScorenum, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 80, 30));
+
+        buttonreturn.setText("Return");
+        buttonreturn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonreturnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(buttonreturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -302,12 +322,13 @@ int score = 0;
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void buttonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonStartActionPerformed
-       buttonStart.setEnabled(false);
+      // makes buttons work
+        buttonStart.setEnabled(false);
         Button1A.setEnabled(true);
         Button2A.setEnabled(true);
         Button3A.setEnabled(true);
         Button4A.setEnabled(true);
-        button1B.setEnabled(true);
+        Button1B.setEnabled(true);
         Button2B.setEnabled(true);
         Button3B.setEnabled(true);
         Button4B.setEnabled(true);
@@ -319,6 +340,7 @@ int score = 0;
         Button2D.setEnabled(true);
         Button3D.setEnabled(true);
         Button4D.setEnabled(true);
+       // decides which set of Questions will be presented
         if (random == 1){
         label1Q.setText ("The first Battle of El Alamein was defending");
         label1A.setText ("Alexandria");
@@ -396,7 +418,7 @@ int score = 0;
         label2B.setText ("6 August 1944");
         label2C.setText ("6 June 1945");
         label2D.setText ("Yesterday");
-        label3Q.setText ("What best describe the battle of teh Bulge");
+        label3Q.setText ("What best describe the battle of the Bulge");
         label3A.setText ("A final German attempt at a offensive");
         label3B.setText ("Tasty");
         label3C.setText ("A desperate Defense of a vital position");
@@ -409,155 +431,215 @@ int score = 0;
         }
         
     }//GEN-LAST:event_buttonStartActionPerformed
-
+// All the buttons check if their buttons is correct for the set of questions asked
     private void Button4AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button4AActionPerformed
         if (random == 1){
-            
+            score = score +0;     
         }
         else if (random == 2){
-        
+         score = score +0;    
     }
         else if (random == 3){
-            
+            score = score +0;     
         }
         else if (random == 4){
-            
+             score = score +0;    
         }
+        Button4A.setEnabled(false);
+        Button4B.setEnabled(false);
+        Button4C.setEnabled(false);
+        Button4D.setEnabled(false);
+        counter ++;
+        Score (counter);
     }//GEN-LAST:event_Button4AActionPerformed
 
     private void Button3DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button3DActionPerformed
         if (random == 1){
-            
+             score = score +0;    
         }
         else if (random == 2){
-        
+         score = score +0;    
     }
         else if (random == 3){
-            
+          score = score +0;       
         }
         else if (random == 4){
-            
+          score = score +0;       
         }
+        Button3A.setEnabled(false);
+        Button3B.setEnabled(false);
+        Button3C.setEnabled(false);
+        Button3D.setEnabled(false);
+        counter ++;
+        Score (counter);
     }//GEN-LAST:event_Button3DActionPerformed
 
     private void Button3CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button3CActionPerformed
          if (random == 1){
-            
+           score = score +0;      
         }
         else if (random == 2){
-        
+         score++;    
     }
         else if (random == 3){
-            
+           score = score +0;    
         }
         else if (random == 4){
-            
+            score = score +0;     
         }
+         Button3A.setEnabled(false);
+        Button3B.setEnabled(false);
+        Button3C.setEnabled(false);
+        Button3D.setEnabled(false);
+        counter ++;
+        Score (counter);
     }//GEN-LAST:event_Button3CActionPerformed
 
     private void Button3AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button3AActionPerformed
          if (random == 1){
-            score++;
+             score++;   
         }
         else if (random == 2){
-        score = score +0;
+         score = score +0;     
     }
         else if (random == 3){
-         score = score +0;   
+         score++; 
         }
         else if (random == 4){
-        score = score +0;    
+        score++;  
         }
+         Button3A.setEnabled(false);
+        Button3B.setEnabled(false);
+        Button3C.setEnabled(false);
+        Button3D.setEnabled(false);
+        counter ++;
+        Score (counter);
     }//GEN-LAST:event_Button3AActionPerformed
 
     private void Button3BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button3BActionPerformed
          if (random == 1){
-            
+             score = score +0;    
         }
         else if (random == 2){
-        
+         score = score +0;    
     }
         else if (random == 3){
-            
+            score = score +0;     
         }
         else if (random == 4){
-            
+            score = score +0;     
         }
+         Button3A.setEnabled(false);
+        Button3B.setEnabled(false);
+        Button3C.setEnabled(false);
+        Button3D.setEnabled(false);
+        counter ++;
+        Score (counter);
     }//GEN-LAST:event_Button3BActionPerformed
 
     private void Button2DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button2DActionPerformed
          if (random == 1){
-            
+            score = score +0;     
         }
         else if (random == 2){
-        
+         score = score +0;    
     }
         else if (random == 3){
-            
+           score = score +0;      
         }
         else if (random == 4){
-            
+          score = score +0;       
         }
+         Button2A.setEnabled(false);
+        Button2B.setEnabled(false);
+        Button2C.setEnabled(false);
+        Button2D.setEnabled(false);
+        counter ++;
+        Score (counter);
     }//GEN-LAST:event_Button2DActionPerformed
 
     private void Button2BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button2BActionPerformed
          if (random == 1){
-            
+           score = score +0;      
         }
         else if (random == 2){
-        
+        score++;
     }
         else if (random == 3){
-            
+             score = score +0;    
         }
         else if (random == 4){
-            
+             score = score +0;    
         }
+         Button2A.setEnabled(false);
+        Button2B.setEnabled(false);
+        Button2C.setEnabled(false);
+        Button2D.setEnabled(false);
+        counter ++;
+        Score (counter);
     }//GEN-LAST:event_Button2BActionPerformed
 
     private void Button2AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button2AActionPerformed
          if (random == 1){
-         score++;   
+         score++;
         }
         else if (random == 2){
         score = score +0;
     }
         else if (random == 3){
-         score = score +0;   
+         score++;   
         }
         else if (random == 4){
-         score = score +0;   
+         score++;
         }
+         Button2A.setEnabled(false);
+        Button2B.setEnabled(false);
+        Button2C.setEnabled(false);
+        Button2D.setEnabled(false);
+        counter ++;
+        Score (counter);
     }//GEN-LAST:event_Button2AActionPerformed
 
     private void Button1DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button1DActionPerformed
          if (random == 1){
-            
+            score = score +0;     
         }
         else if (random == 2){
-        
+         score = score +0;    
     }
         else if (random == 3){
-            
+         score = score +0;        
         }
         else if (random == 4){
-            
+           score++; 
         }
+         Button1A.setEnabled(false);
+        Button1B.setEnabled(false);
+        Button1C.setEnabled(false);
+        Button1D.setEnabled(false);
+        counter ++;
+        Score (counter);
     }//GEN-LAST:event_Button1DActionPerformed
 
     private void Button1CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button1CActionPerformed
          if (random == 1){
-            
+           score = score +0;    
         }
         else if (random == 2){
-        
+         score = score +0;    
     }
         else if (random == 3){
-            
+             score = score +0;    
         }
         else if (random == 4){
-            
+             score = score +0;    
         }
+         Button1A.setEnabled(false);
+        Button1B.setEnabled(false);
+        Button1C.setEnabled(false);
+        Button1D.setEnabled(false);
+        counter ++;
+        Score (counter);
     }//GEN-LAST:event_Button1CActionPerformed
 
     private void Button1AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button1AActionPerformed
@@ -568,88 +650,136 @@ int score = 0;
         score = score +0;
     }
         else if (random == 3){
-         score = score +0;   
+         score++;   
         }
         else if (random == 4){
-        score = score +0;    
+        score++;   
         }
+         Button1A.setEnabled(false);
+        Button1B.setEnabled(false);
+        Button1C.setEnabled(false);
+        Button1D.setEnabled(false);
+        counter ++;
+        Score (counter);
+        
     }//GEN-LAST:event_Button1AActionPerformed
 
-    private void button1BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1BActionPerformed
+    private void Button1BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button1BActionPerformed
         if (random == 1){
-            
+          score = score +0;     
         }
         else if (random == 2){
-        
+         score = score +0;    
     }
         else if (random == 3){
-            
+           score = score +0;      
         }
         else if (random == 4){
-            
+          score = score +0;       
         }
-    }//GEN-LAST:event_button1BActionPerformed
+        Button1A.setEnabled(false);
+        Button1B.setEnabled(false);
+        Button1C.setEnabled(false);
+        Button1D.setEnabled(false);
+        counter ++;
+        Score (counter);
+    }//GEN-LAST:event_Button1BActionPerformed
 
     private void Button2CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button2CActionPerformed
          if (random == 1){
-            
+            score = score +0;     
         }
         else if (random == 2){
-        
+         score = score +0;    
     }
         else if (random == 3){
-            
+          score = score +0;       
         }
         else if (random == 4){
-            
+         score = score +0;        
         }
+         Button2A.setEnabled(false);
+        Button2B.setEnabled(false);
+        Button2C.setEnabled(false);
+        Button2D.setEnabled(false);
+        counter ++;
+        Score (counter);
     }//GEN-LAST:event_Button2CActionPerformed
 
     private void Button4BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button4BActionPerformed
          if (random == 1){
-            
+             score++;   
         }
         else if (random == 2){
-        
+         score++;  
     }
         else if (random == 3){
-            
+          score = score +0;       
         }
         else if (random == 4){
-            
+         score = score +0;        
         }
+         Button4A.setEnabled(false);
+        Button4B.setEnabled(false);
+        Button4C.setEnabled(false);
+        Button4D.setEnabled(false);
+        counter ++;
+        Score (counter);
     }//GEN-LAST:event_Button4BActionPerformed
 
     private void Button4CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button4CActionPerformed
          if (random == 1){
-            
+             score = score +0;    
         }
         else if (random == 2){
-        
+         score = score +0;    
     }
         else if (random == 3){
-            
+          score++;  
         }
         else if (random == 4){
-            
+          score = score +0;       
         }
+         Button4A.setEnabled(false);
+        Button4B.setEnabled(false);
+        Button4C.setEnabled(false);
+        Button4D.setEnabled(false);
+        counter ++;
+        Score (counter);
     }//GEN-LAST:event_Button4CActionPerformed
 
     private void Button4DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button4DActionPerformed
          if (random == 1){
-            
+             score = score +0;    
         }
         else if (random == 2){
-        
+         score = score +0;    
     }
         else if (random == 3){
-            
+           score = score +0;      
         }
         else if (random == 4){
-            
+          score++;  
         }
+         Button4A.setEnabled(false);
+        Button4B.setEnabled(false);
+        Button4C.setEnabled(false);
+        Button4D.setEnabled(false);
+        counter ++;
+        Score (counter);
     }//GEN-LAST:event_Button4DActionPerformed
 
+    private void buttonreturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonreturnActionPerformed
+         this.setVisible(false);
+        new CulminatingProjectForm().setVisible(true);
+    }//GEN-LAST:event_buttonreturnActionPerformed
+public Integer Score(Integer Counter){
+ if (Counter == 4){
+    labelScorenum.setText (Integer.toString(score));
+    buttonreturn.setEnabled(true);
+ }   
+ return 0;
+}
     /**
      * @param args the command line arguments
      */
@@ -687,6 +817,7 @@ int score = 0;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Button1A;
+    private javax.swing.JButton Button1B;
     private javax.swing.JButton Button1C;
     private javax.swing.JButton Button1D;
     private javax.swing.JButton Button2A;
@@ -702,8 +833,8 @@ int score = 0;
     private javax.swing.JButton Button4C;
     private javax.swing.JButton Button4D;
     private javax.swing.JLabel LabelQuizTitle;
-    private javax.swing.JButton button1B;
     private javax.swing.JButton buttonStart;
+    private javax.swing.JButton buttonreturn;
     private javax.swing.JButton jButton7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
@@ -727,5 +858,7 @@ int score = 0;
     private javax.swing.JLabel label4C;
     private javax.swing.JLabel label4D;
     private javax.swing.JLabel label4Q;
+    private javax.swing.JLabel labelScore;
+    private javax.swing.JLabel labelScorenum;
     // End of variables declaration//GEN-END:variables
 }

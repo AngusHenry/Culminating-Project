@@ -12,6 +12,7 @@ import java.util.*;
  * @author anhen3335
  */
 public class CulminatingProjectForm extends javax.swing.JFrame {
+    // Declaring all the Arrays
 ArrayList <String> Datesstart = new ArrayList();
 ArrayList <String> Datesend = new ArrayList();
 ArrayList <String> Victor = new ArrayList();
@@ -28,6 +29,7 @@ ArrayList <String> Battles = new ArrayList();
      * Creates new form CulminatingProjectForm
      */
     public CulminatingProjectForm() {
+        //setButtons
         initComponents();
         buttonCaen.setEnabled(false);
         buttonEl.setEnabled(false);
@@ -59,6 +61,9 @@ ArrayList <String> Battles = new ArrayList();
         buttonbulge = new javax.swing.JButton();
         buttonStart = new javax.swing.JButton();
         labelExplain = new javax.swing.JLabel();
+        buttonQUizstart = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        textExplain = new javax.swing.JTextArea();
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
@@ -81,7 +86,7 @@ ArrayList <String> Battles = new ArrayList();
         labelTitle.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         labelTitle.setText("WW2 Battle Comparison");
 
-        buttonCompare.setText("Compare");
+        buttonCompare.setText("Compare All Battles");
         buttonCompare.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonCompareActionPerformed(evt);
@@ -118,38 +123,58 @@ ArrayList <String> Battles = new ArrayList();
 
         labelExplain.setText("Press start to begin");
 
+        buttonQUizstart.setText("Start Quiz");
+        buttonQUizstart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonQUizstartActionPerformed(evt);
+            }
+        });
+
+        textExplain.setColumns(20);
+        textExplain.setRows(5);
+        jScrollPane4.setViewportView(textExplain);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(buttonCaen)
-                .addGap(44, 44, 44)
-                .addComponent(buttonEl)
-                .addGap(57, 57, 57)
-                .addComponent(buttonbulge)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buttonCompare)
-                .addGap(51, 51, 51))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(buttonStart, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(246, 246, 246))
+                        .addGap(116, 116, 116)
+                        .addComponent(buttonQUizstart)
+                        .addGap(57, 57, 57))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(labelExplain)
                         .addGap(236, 236, 236))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(labelTitle)
                         .addGap(143, 143, 143))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addComponent(buttonCaen)
+                                .addGap(44, 44, 44)
+                                .addComponent(buttonEl)
+                                .addGap(57, 57, 57)
+                                .addComponent(buttonbulge)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(buttonCompare, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,7 +184,9 @@ ArrayList <String> Battles = new ArrayList();
                 .addGap(4, 4, 4)
                 .addComponent(labelExplain)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonStart)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonStart)
+                    .addComponent(buttonQUizstart))
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
@@ -170,7 +197,9 @@ ArrayList <String> Battles = new ArrayList();
                     .addComponent(buttonCaen)
                     .addComponent(buttonEl)
                     .addComponent(buttonbulge))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -190,16 +219,25 @@ ArrayList <String> Battles = new ArrayList();
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonCompareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCompareActionPerformed
+       // Decide what needs to be presented in the compare text area
         textCompare.setText ("");
         textCompare.append ("Most overall casualties: "  + battle("0") + " (" +totalcas(0) + ")" +"\n");
         textCompare.append ("Most Axis casualties: " + battle("1") +" (" + Axiscas(0) + ")" + "\n");
         textCompare.append ("Most Allied casualties: " + battle ("2") + " (" +Alliesacs(0) + ")" + "\n");
         textCompare.append ("Leaders with most battles:" + "\n");
         textCompare.append ("-Axis: " + mostAxis("0") + "\n");
-        textCompare.append ("-Allies: " + mostAllies("0"));
+        textCompare.append ("-Allies: " + mostAllies("0") + "\n");
+        textCompare.append ("Nations that participated in the most battles:" + "\n");
+        textCompare.append ("-Allies:" + parpticipateAllies("0") + "\n");
+        textCompare.append ("-Axis:" + parpticipateAxis("0") + "\n");
         
     }//GEN-LAST:event_buttonCompareActionPerformed
-public int totalcas (int check){
+/**
+     * This method calculates the total Casualties.
+     * return big
+     * param big,test
+     */
+    public int totalcas (int check){
     int big = check;
     int test;
     for (int i = 0; i  < CasualtiesGood.size(); i ++){
@@ -210,7 +248,11 @@ public int totalcas (int check){
     }
    return big;
 }
-
+/**
+     * This method tells us which battle had the most Casualties.
+     * return  Battles.get(count);
+     * param big,test, count, checker
+     */
 public String battle (String check){
      int big = 0;
      int checker  = Integer.parseInt(check);
@@ -241,7 +283,11 @@ public String battle (String check){
     }
     return Battles.get(count);
 }
-            
+   /**
+     * This method calculates the total Casualties for the Axis.
+     * return big
+     * param big,test
+     */         
 public int Axiscas (Integer check){
       int big = check;
     int test;
@@ -253,7 +299,11 @@ public int Axiscas (Integer check){
     }
     return big;
 }
-
+/**
+     * This method calculates the total Casualties for the Allies.
+     * return big
+     * param big,test
+     */
 public int Alliesacs (Integer check){
        int big = check;
     int test;
@@ -265,6 +315,11 @@ public int Alliesacs (Integer check){
     }
     return big;
 }
+/**
+     * This method checks which Axis leader participated in the most battles.
+     * return LeadersEvil.get(count);
+     * param once, count
+     */
 public String mostAxis (String check){
     int once = 0;
     int count = 0;
@@ -285,11 +340,15 @@ public String mostAxis (String check){
     }
     return LeadersEvil.get(count);
 }
-
+/**
+     * This method checks which Allies leader participated in the most battles.
+     * return LeadersGood.get(count);
+     * param once, count
+     */
 public String mostAllies (String check){
     int once = 0;
     int count = 0;
-    for (int i = 0; i  < LeadersEvil.size(); i ++){
+    for (int i = 0; i  < LeadersGood.size(); i ++){
         if (once == 0){
             if (LeadersGood.get(i) == LeadersGood.get(i)){
                 count = 0; 
@@ -305,8 +364,59 @@ public String mostAllies (String check){
         }
     }
     return LeadersGood.get(count);
+    /**
+     * This method checks which Allied nation took part in the most battles.
+     * return LeadersGood.get(count);
+     * param once, count
+     */
+}
+public String parpticipateAllies (String check){
+       int once = 0;
+    int count = 0;
+    for (int i = 0; i  < BelligerentsGood.size(); i ++){
+        if (once == 0){
+            if (BelligerentsGood.get(i) == BelligerentsGood.get(i)){
+                count = 0; 
+                once ++;
+            }
+        }
+            else
+            {
+                 if (BelligerentsGood.get(i) == BelligerentsGood.get(count)){
+                count = i; 
+            }
+            }
+            
+        }
+        return BelligerentsGood.get(count);
+}
+ /**
+     * This method checks which Axis nation took part in the most battles.
+     * return LeadersEvil.get(count);
+     * param once, count
+     */
+public String parpticipateAxis (String check){
+       int once = 0;
+    int count = 0;
+    for (int i = 0; i  < BelligerentsEvil.size(); i ++){
+        if (once == 0){
+            if (BelligerentsEvil.get(i) == BelligerentsEvil.get(i)){
+                count = 0; 
+                once ++;
+            }
+        }
+            else
+            {
+                 if (BelligerentsEvil.get(i) == BelligerentsEvil.get(count)){
+                count = i; 
+            }
+            }
+            
+        }
+        return BelligerentsEvil.get(count);
 }
     private void buttonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonStartActionPerformed
+       // adds all information to the Arrays
        Collections.addAll(Datesstart, "6 June 1944", "1 July 1942","16 Dec 1944");
        Collections.addAll (Datesend, "6 August 1944", "27 July 1942", "25 Jan 1945");
        Collections.addAll (Victor, "Allies", "Stalemate", "Axis");
@@ -314,8 +424,8 @@ public String mostAllies (String check){
        Collections.addAll (LeadersEvil, "Erwin Rommel(Ger)", "Friedrich Dollmann(Ger)", "Paul Hausser(Ger)", "Ettore Bastico(Italy)" , "Walter Model(Ger)", "Gerd von Rundstedt(Ger)", "Hasso von Manteuffel(Ger)", "Sepp Dietrich(Ger)", "Erich Brandenberger(Ger)" + "Erwin Rommel(Ger)");
        Collections.addAll (CasualtiesGood, 50539, 13250, 146000);
        Collections.addAll (CasualtiesEvil, 200000, 17000, 125000);
-       Collections.addAll (BelligerentsGood, "United Kingdom", "Canada", "United States", "Australia", "British Raj", "New Zealend", "France", "Belgium","Luxembourg", "South Africa");
-       Collections.addAll (BelligerentsEvil, "Nazi Germany", "Kingdom of Italy");
+       Collections.addAll (BelligerentsGood, "United Kingdom", "Canada", "United States", "Australia", "British Raj", "New Zealend", "France", "Belgium","Luxembourg", "South Africa","United Kingdom","United Kingdom");
+       Collections.addAll (BelligerentsEvil, "Nazi Germany", "Kingdom of Italy","Nazi Germany","Nazi Germany");
        Collections.addAll (Battles, "Caen", "First Battle of El Alamein", "Battle of the Bulge");
         buttonStart.setEnabled(false);
         buttonCaen.setEnabled(true);
@@ -325,6 +435,7 @@ public String mostAllies (String check){
     }//GEN-LAST:event_buttonStartActionPerformed
 
     private void buttonCaenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCaenActionPerformed
+       // sets texts area to have all teh information on the battle of Caen
         textBattle.setText("");
         textBattle.setText("***Caen***" + "\n");
         textBattle.append ("Belligerents: " + "\n");
@@ -341,11 +452,14 @@ public String mostAllies (String check){
         textBattle.append ("-Ended: " + stop("0") + "\n");
         textBattle.append ("Victors: " + "\n");
         textBattle.append ( "-" + winner("0"));
+        textExplain.setText(" ");
+        textExplain.append("The importance of this battle was because the city was an \n important junction of roads needed for the allied forces at the \n D-Day landings was vital for the German supplies due to this \n junction. With the capture of the city the allies were able to hinder \n the German supply lines, capture the last German stronghold \n opposing the troops at D-Day and were able to secure a vital \n logistical center. The fight itself was very difficult because the \n Germans were vastly outnumbering the Allies and dug into \n fortified positions but the Allies managed to pull through due to \n the surprise of the Normandy landings, confusion in German \n high command and the split attention of the German reserves. ");
         
         
     }//GEN-LAST:event_buttonCaenActionPerformed
 
     private void buttonElActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonElActionPerformed
+         // sets texts area to have all teh information on the battle of El Alamein
         textBattle.setText("");
         textBattle.setText("***First Battle of El Alamein***" + "\n");
         textBattle.append ("Belligerents: " + "\n");
@@ -362,9 +476,12 @@ public String mostAllies (String check){
         textBattle.append ("-Ended: " + stop("1") + "\n");
         textBattle.append ("Victors: " + "\n");
         textBattle.append ( "-" + winner("1"));
+        textExplain.setText("");
+        textExplain.append("This battle was important because the city of El Alamein was close \nenough Alexandria, the United Kingdom base of operations in Egypt \nand a vital port, and the suez canal, vital for british shipping to their \nasian and oceanic colony. After Rommel's quick crossing of \nnorthern Africa the allies were desperate and needed to stop the \nadvance and decided to hold the city, the city was quickly \nsurrounded and put under siege. The Allied forces were not \nexpected to hold the city for long against superior axis force but \nmanaged to fight them to a standstill denying the axis the port \nneeded to supply to supply their assault against Alexandria\nessentially halting Rommel's lightning campaign. ");
     }//GEN-LAST:event_buttonElActionPerformed
 
     private void buttonbulgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonbulgeActionPerformed
+       // sets texts area to have all teh information on the battle of the Bulge
         textBattle.setText("");
         textBattle.setText("***Battle of the Bulge***" + "\n");
         textBattle.append ("Belligerents: " + "\n");
@@ -381,7 +498,19 @@ public String mostAllies (String check){
         textBattle.append ("-Ended: " + stop("2") + "\n");
         textBattle.append ("Victors: " + "\n");
         textBattle.append ( "-" + winner("0"));
+        textExplain.setText("");
+        textExplain.append("This battle was the final major action of Nazi Germany on the western\nfront trying to recreate the success the of the of their initial push into\nFrance through the ardennes with tank by attempting the same tactic\nin the same place. The battle was initially success taking the allied\nforces by surprise but quickly fell apart due to the large number of allied\nforces, the lack of supplies and the allied forces being able to cut the\nGermans off from the sea preventing a encirclement. After this final\noffensive the Germans on the western front the Germans were put on\nthe backfoot and then resistance collapsed completely whenthe allies\ncrossed the Rhine.");
     }//GEN-LAST:event_buttonbulgeActionPerformed
+
+    private void buttonQUizstartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonQUizstartActionPerformed
+        this.setVisible(false);
+        new Quiz().setVisible(true);
+    }//GEN-LAST:event_buttonQUizstartActionPerformed
+    /**
+     *This method gets which Axis nation was in the battle
+     * return BelligerentsEvil.get(i);
+     * param i
+     */
     public String EvilBelligerents (String check){
         int i;
         if (check == "0"){
@@ -395,6 +524,11 @@ public String mostAllies (String check){
         }
          return BelligerentsEvil.get(i);
     }
+      /**
+     *This method gets which Allied nation was in the battle
+     * return BelligerentsGood.get(i);
+     * param i
+     */
     public String GoodBelligerents (String check){
         int i;
         if (check == "0"){
@@ -432,6 +566,11 @@ public String mostAllies (String check){
         }
         return BelligerentsGood.get (i);
     }
+     /**
+     *This method gets how many casuelties the Axis nations took in the battle.
+     * return BelligerentsEvil.get(i);
+     * param i
+     */
     public Integer EvilCasuelties (Integer check){
         int i;
         if (check == 0){
@@ -448,6 +587,11 @@ public String mostAllies (String check){
         }
         return CasualtiesEvil.get (i);
     }
+     /**
+     *This method gets how many casuelties the Allied nations took in the battle.
+     * return BelligerentsGood.get(i);
+     * param i
+     */
      public Integer GoodCasuelties (Integer check){
         int i;
         if (check == 0){
@@ -464,6 +608,11 @@ public String mostAllies (String check){
         }
         return CasualtiesGood.get (i);
     }
+      /**
+     *This method finds when the battle starts.
+     * return Datesstart.get (i);
+     * param i
+     */
      public String Start (String check){
         int i;
         if (check == "0"){
@@ -480,6 +629,11 @@ public String mostAllies (String check){
         }
         return Datesstart.get (i);
     }
+       /**
+     *This method finds when the battle Ends.
+     * return Datesend.get (i);
+     * param i
+     */
      public String stop (String check){
         int i;
         if (check == "0"){
@@ -496,6 +650,11 @@ public String mostAllies (String check){
         }
         return Datesend.get (i);
     }
+       /**
+     *This method finds who won the battle
+     * return Victor.get (i);
+     * param i
+     */
      public String winner (String check){
         int i;
         if (check == "0"){
@@ -512,6 +671,11 @@ public String mostAllies (String check){
         }
         return Victor.get (i);
     }
+     /**
+     *This method finds which Axis leaders were leading the battle
+     * return LeadersEvil.get (i);
+     * param i
+     */
      public String EvilLeader (String check){
            int i;
         if (check == "0"){
@@ -546,6 +710,11 @@ public String mostAllies (String check){
         }
         return LeadersEvil.get (i);
      }
+      /**
+     *This method finds which Allied leaders were leading the battle
+     * return LeadersEvil.get (i);
+     * param i
+     */
      public String GoodLeaders(String check){
         int i;
         if (check == "0"){
@@ -614,6 +783,7 @@ public String mostAllies (String check){
     private javax.swing.JButton buttonCaen;
     private javax.swing.JButton buttonCompare;
     private javax.swing.JButton buttonEl;
+    private javax.swing.JButton buttonQUizstart;
     private javax.swing.JButton buttonStart;
     private javax.swing.JButton buttonbulge;
     private javax.swing.JButton jButton1;
@@ -621,10 +791,12 @@ public String mostAllies (String check){
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JLabel labelExplain;
     private javax.swing.JLabel labelTitle;
     private javax.swing.JTextArea textBattle;
     private javax.swing.JTextArea textCompare;
+    private javax.swing.JTextArea textExplain;
     // End of variables declaration//GEN-END:variables
 }
